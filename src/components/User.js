@@ -14,7 +14,7 @@ export default function User() {
     const User={Name, PRBench}
     console.log(User)
 
-    fetch("http://localhost:8080/user/add",{
+    fetch("http://localhost:8080/GymMember/add",{
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(User)
