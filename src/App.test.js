@@ -5,4 +5,3 @@ test('renders learn react link', () => {
   const rndr = render(<App />);
   expect(rndr).toBeDefined();
 });
-

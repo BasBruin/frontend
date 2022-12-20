@@ -37,37 +37,36 @@ export default function MenuAppbar() {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Befit
           </Typography>
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Groepen</MenuItem>
-                <MenuItem onClick={handleClose}>Vrienden</MenuItem>
-                <MenuItem onClick={handleClose}>Agenda</MenuItem>
-              </Menu>
-            </div>
+          <div>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Groepen</MenuItem>
+              <MenuItem onClick={handleClose}>Vrienden</MenuItem>
+              <MenuItem onClick={handleClose}>Agenda</MenuItem>
+            </Menu>
+          </div>
         </Toolbar>
       </AppBar>
     </Box>

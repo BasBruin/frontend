@@ -1,10 +1,9 @@
 import Appbar from './components/Appbar';
 
-
 function Home() {
   return (
     <div className="Home">
-      <Appbar/>
+      <Appbar />
     </div>
   );
 }
