@@ -9,12 +9,13 @@ export default function User() {
   const[Name, setName] = useState('');
   const[PRBench, setPRBench] = useState('');
 
-  const handleClick=(e)=>{
+  const AddUser=(e)=>{
     e.preventDefault()
     const User={Name, PRBench}
     console.log(User)
 
     fetch("http://localhost:8080/GymMember/add",{
+      mode: 'no-cors',
       method:"POST",
       headers:{"Content-Type":"application/json"},
       body:JSON.stringify(User)
@@ -40,7 +41,7 @@ export default function User() {
      onChange={(e)=>setName(e.target.value)}/>
      <TextField id="standard-basic" label="Bench PR" variant="standard" fullWidth value={PRBench}
      onChange={(e)=>setPRBench(e.target.value)}/>
-     <Button variant="contained" onClick={handleClick}>Save</Button>
+     <Button variant="contained" onClick={AddUser}>Save</Button>
    </Box>
     </Paper>
     
