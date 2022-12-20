@@ -1,6 +1,6 @@
 import './App.css';
 import MenuAppbar from './components/Appbar';
-import User from './components/User'
+import User from './components/User';
 
 function App() {
   return (
