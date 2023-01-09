@@ -15,13 +15,17 @@ export default function User() {
     console.log(User);
 
     fetch('http://localhost:8080/GymMember/add', {
-      mode: 'no-cors',
+      mode:'no-cors',
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 
+        'Content-Type': 'application/json',
+        "Access-Control-Allow-Origin": "http://localhost:3000",
+    },
       body: JSON.stringify(User),
-    }).then(() => {
+    }) .then(() => {
       console.log('New User added');
     });
+
   };
 
   return (

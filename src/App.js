@@ -1,12 +1,17 @@
 import './App.css';
-import MenuAppbar from './components/Appbar';
+import { Route, Routes, BrowserRouter } from "react-router-dom";
+import Login from './Login';
 import User from './components/User';
 
 function App() {
   return (
     <div className="App">
-      <MenuAppbar />
-      <User />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<User />} />
+          <Route path="/Login" element={<Login />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
