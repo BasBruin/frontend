@@ -44,7 +44,7 @@ function Login() {
                 onChange={(e) => setWachtwoord(e.target.value)}
               />
             </div>
-            <button class="button login__submit" onClick={() => Login()}>
+            <button class="button login__submit" onClick={Login}>
               <span class="button__text">Inloggen</span>
             </button>
           </form>
