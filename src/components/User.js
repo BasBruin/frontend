@@ -14,18 +14,13 @@ export default function User() {
     const User = { Name, PRBench };
     console.log(User);
 
-    fetch('http://localhost:8080/GymMember/add', {
-      mode:'no-cors',
+    fetch('http://localhost:8080/Gymmember/add', {
       method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-    },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(User),
-    }) .then(() => {
-      console.log('New User added');
+    }).then(() => {
+      console.log('New User Added');
     });
-
   };
 
   return (
