@@ -37,6 +37,7 @@ export default function User() {
         <TextField
           id="standard-basic"
           label="Naam"
+          name='Username'
           variant="standard"
           fullWidth
           value={Name}
@@ -45,12 +46,13 @@ export default function User() {
         <TextField
           id="standard-basic"
           label="Bench PR"
+          name='Bench PR'
           variant="standard"
           fullWidth
           value={PRBench}
           onChange={(e) => setPRBench(e.target.value)}
         />
-        <Button variant="contained" onClick={AddUser}>
+        <Button name="Button" class="Button" variant="contained" onClick={AddUser}>
           Save
         </Button>
       </Box>
