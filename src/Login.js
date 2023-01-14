@@ -2,7 +2,7 @@ import React from "react";
 import "./Login.css";
 import MenuAppbar from "./components/Appbar";
 import { useState } from "react";
-import { redirect } from "react-router-dom";
+
 
 function Login() {
     const [Wachtwoord, setWachtwoord] = useState([]);
