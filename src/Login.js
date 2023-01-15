@@ -22,8 +22,6 @@ function Login() {
            else{
             console.log("Login fout");
            }
-
-          
       }
 
   return (

@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, Paper } from '@mui/material';
 import { useState } from 'react';
-import MenuAppbar from './Appbar';
+import MenuAppbar from './components/Appbar';
 
 export default function User() {
   const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
@@ -25,7 +25,9 @@ export default function User() {
   };
 
   return (
-    <Paper elevation={3} style={paperStyle}>
+    <div>
+      <MenuAppbar/>
+      <Paper elevation={3} style={paperStyle}>
       <Box
         component="form"
         sx={{
@@ -58,5 +60,6 @@ export default function User() {
         </Button>
       </Box>
     </Paper>
+    </div>
   );
 }

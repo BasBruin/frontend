@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, Paper } from '@mui/material';
 import { useState } from 'react';
+import MenuAppbar from './components/Appbar';
 
 
 export default function Update() {
@@ -22,10 +23,13 @@ export default function Update() {
       body: JSON.stringify(User),
     })
     .then((res) => res.text())
-    .then((res) => console.log(res));
+    .then((res) => console.log(res))
+     window.alert("U heeft gebruiker met id: "+{id}+ " aangepast");
   };
 
   return (
+    <div>
+  <MenuAppbar />
     <Paper elevation={3} style={paperStyle}>
       <Box
         component="form"
@@ -65,9 +69,11 @@ export default function Update() {
           onChange={(e) => setPRBench(e.target.value)}
         />
         <Button name="Button" variant="contained" onClick={UpdateUser}>
-          Save
+          Update
         </Button>
       </Box>
     </Paper>
+    </div>
+    
   );
 }
