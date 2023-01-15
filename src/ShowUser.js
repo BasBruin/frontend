@@ -5,28 +5,22 @@ import { useState } from 'react';
 import MenuAppbar from './components/Appbar';
 
 
-export default function Delete() {
-  const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
+
+export default function ShowUser() {
+  const [User , setUser] = useState('');
   const [id, setId] = useState('');
-  const [Users , setUsers] = useState('');
-
-  const DeleteUser = (e) => {
+  const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
+  
+const ShowUser = (e) => {
     e.preventDefault();
+    fetch("http://localhost:8080/Gymmember/get/"+id)
+    .then((response) => response.json())
+    .then((json) => setUser(json))
+    .then(console.log(User.name));
+  }
 
-
-    fetch('http://localhost:8080/Gymmember/Delete/'+ id, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(id),
-    })
-    .then((res) => res.text())
-    .then((res) => console.log(res));
-    window.alert("U heeft een gebruiker verwijderd");
-  };
-
-
-  return (
-    <div>
+return (
+  <div>
   <MenuAppbar />
     <Paper elevation={3} style={paperStyle}>
       <Box
@@ -37,7 +31,7 @@ export default function Delete() {
         noValidate
         autoComplete="off"
       >
-        <h1>Delete gebruiker</h1>
+        <h1>Laat gebruiker zien</h1>
         <input
           id="standard-basic"
           label="Id"
@@ -48,12 +42,13 @@ export default function Delete() {
           value={id.value}
           onChange={(e) => setId(e.target.value)}
         />
-        <Button name="Button" variant="contained" onClick={DeleteUser}>
-          Delete
+        <Button name="Button" variant="contained" onClick={ShowUser}>
+          Show
         </Button>
-
+        
       </Box>
+      Naam: {User.name} PRBench: {User.prbench}
     </Paper>
     </div>
-  );
+);
 }

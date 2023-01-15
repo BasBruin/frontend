@@ -24,7 +24,7 @@ export default function Update() {
     })
     .then((res) => res.text())
     .then((res) => console.log(res))
-     window.alert("U heeft gebruiker met id: "+{id}+ " aangepast");
+     window.alert("U heeft een gebruiker aangepast");
   };
 
   return (
