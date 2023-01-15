@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import { Button, Paper } from '@mui/material';
 import { useState } from 'react';
+import MenuAppbar from './Appbar';
 
 export default function User() {
   const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
@@ -52,7 +53,7 @@ export default function User() {
           value={PRBench}
           onChange={(e) => setPRBench(e.target.value)}
         />
-        <Button name="Button" class="Button" variant="contained" onClick={AddUser}>
+        <Button name="Button" variant="contained" onClick={AddUser}>
           Save
         </Button>
       </Box>

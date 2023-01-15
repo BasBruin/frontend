@@ -4,28 +4,25 @@ import TextField from '@mui/material/TextField';
 import { Button, Paper } from '@mui/material';
 import { useState } from 'react';
 
-export default function AddUser() {
+
+export default function Update() {
   const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' };
   const [Name, setName] = useState('');
   const [PRBench, setPRBench] = useState('');
+  const [id, setId] = useState('');
 
-  const AddUser = (e) => {
+  const UpdateUser = (e) => {
     e.preventDefault();
-    const User = { Name, PRBench };
+    const User = { id, Name, PRBench };
     console.log(User);
 
-    fetch('http://localhost:8080/GymMember/add', {
-      mode:'no-cors',
-      method: 'POST',
-      headers: { 
-        'Content-Type': 'application/json',
-        "Access-Control-Allow-Origin": "http://localhost:3000",
-    },
+    fetch('http://localhost:8080/Gymmember/Update', {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(User),
-    }) .then(() => {
-      console.log('New User added');
-    });
-
+    })
+    .then((res) => res.text())
+    .then((res) => console.log(res));
   };
 
   return (
@@ -38,10 +35,21 @@ export default function AddUser() {
         noValidate
         autoComplete="off"
       >
-        <h1>Voeg gebruiker toe</h1>
+        <h1>Update gebruiker</h1>
+        <input
+          id="standard-basic"
+          label="Id"
+          type="number"
+          name='Id'
+          variant="standard"
+          fullWidth
+          value={id.value}
+          onChange={(e) => setId(e.target.value)}
+        />
         <TextField
           id="standard-basic"
           label="Naam"
+          name='Username'
           variant="standard"
           fullWidth
           value={Name}
@@ -50,12 +58,13 @@ export default function AddUser() {
         <TextField
           id="standard-basic"
           label="Bench PR"
+          name='Bench PR'
           variant="standard"
           fullWidth
           value={PRBench}
           onChange={(e) => setPRBench(e.target.value)}
         />
-        <Button variant="contained" onClick={AddUser}>
+        <Button name="Button" variant="contained" onClick={UpdateUser}>
           Save
         </Button>
       </Box>
