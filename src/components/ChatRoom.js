@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable default-case */
+import React, { useEffect, useState } from 'react'
 import {over} from 'stompjs';
 import SockJS from 'sockjs-client';
 
@@ -21,14 +22,14 @@ const ChatRoom = () => {
         let Sock = new SockJS('http://localhost:8080/ws');
         stompClient = over(Sock);
         stompClient.connect({},onConnected, onError);
-    };
+    }
 
     const onConnected = () => {
         setUserData({...userData,"connected": true});
         stompClient.subscribe('/chatroom/public', onMessageReceived);
         stompClient.subscribe('/user/'+userData.username+'/private', onPrivateMessage);
         userJoin();
-    };
+    }
 
     const userJoin=()=>{
           var chatMessage = {
@@ -36,11 +37,10 @@ const ChatRoom = () => {
             status:"JOIN"
           };
           stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
-    };
+    }
 
     const onMessageReceived = (payload)=>{
         var payloadData = JSON.parse(payload.body);
-        // eslint-disable-next-line default-case
         switch(payloadData.status){
             case "JOIN":
                 if(!privateChats.get(payloadData.senderName)){
@@ -53,7 +53,7 @@ const ChatRoom = () => {
                 setPublicChats([...publicChats]);
                 break;
         }
-    };
+    }
     
     const onPrivateMessage = (payload)=>{
         console.log(payload);
@@ -67,17 +67,17 @@ const ChatRoom = () => {
             privateChats.set(payloadData.senderName,list);
             setPrivateChats(new Map(privateChats));
         }
-    };
+    }
 
     const onError = (err) => {
         console.log(err);
         
-    };
+    }
 
     const handleMessage =(event)=>{
         const {value}=event.target;
         setUserData({...userData,"message": value});
-    };
+    }
     const sendValue=()=>{
             if (stompClient) {
               var chatMessage = {
@@ -89,7 +89,7 @@ const ChatRoom = () => {
               stompClient.send("/app/message", {}, JSON.stringify(chatMessage));
               setUserData({...userData,"message": ""});
             }
-    };
+    }
 
     const sendPrivateValue=()=>{
         if (stompClient) {
@@ -107,25 +107,25 @@ const ChatRoom = () => {
           stompClient.send("/app/private-message", {}, JSON.stringify(chatMessage));
           setUserData({...userData,"message": ""});
         }
-    };
+    }
 
     const handleUsername=(event)=>{
         const {value}=event.target;
         setUserData({...userData,"username": value});
-    };
+    }
 
     const registerUser=()=>{
         connect();
-    };
+    }
     return (
     <div className="container">
         {userData.connected?
         <div className="chat-box">
             <div className="member-list">
                 <ul>
-                    <li onClick={()=>{setTab("CHATROOM");}} className={`member ${tab==="CHATROOM" && "active"}`}>Chatroom</li>
+                    <li onClick={()=>{setTab("CHATROOM")}} className={`member ${tab==="CHATROOM" && "active"}`}>Chatroom</li>
                     {[...privateChats.keys()].map((name,index)=>(
-                        <li onClick={()=>{setTab(name);}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
+                        <li onClick={()=>{setTab(name)}} className={`member ${tab===name && "active"}`} key={index}>{name}</li>
                     ))}
                 </ul>
             </div>
@@ -177,7 +177,7 @@ const ChatRoom = () => {
               </button> 
         </div>}
     </div>
-    );
-};
+    )
+}
 
-export default ChatRoom;
+export default ChatRoom
